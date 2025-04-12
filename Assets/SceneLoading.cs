@@ -8,6 +8,7 @@ public class SceneLoading : MonoBehaviour
     [SerializeField] private Slider _progressBar;
 
     [SerializeField] private const string MENU_SCENE_NAME = "Menu";
+    [SerializeField] protected Text loading;
     
     void Start() => StartCoroutine(LoadScene());
 
@@ -27,9 +28,11 @@ public class SceneLoading : MonoBehaviour
         {
             _progressBar.value = loadConcreteSceen.progress;
 
+            loading.text = $"{(int)(loadConcreteSceen.progress * 100)}%";
+
             loadConcreteSceen.allowSceneActivation = loadConcreteSceen.progress >= 0.9f;
 
-            yield return null;
+            yield return new WaitForSeconds(0.5f);
         }
 
     }
