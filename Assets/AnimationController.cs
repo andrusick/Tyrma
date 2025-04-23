@@ -20,6 +20,6 @@ public class AnimationController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         animator.SetFloat("horizontalMoving", horizontalInput);
-        animator.SetFloat("horizontalMoving", verticalInput);
+        animator.SetFloat("verticalMoving", verticalInput);
     }
 }
