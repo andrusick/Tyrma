@@ -21,16 +21,11 @@ public class DoorController : MonoBehaviour,Iinteractable
             animator.SetBool("DoorisOpen ", isOpen);
 
         }
-
         else 
         {
             isOpen = true;
             animator.SetBool("DoorisOpen ", isOpen);
         }
-    }
-    public void Interact_1()
-    {
-        
     }
    
 }

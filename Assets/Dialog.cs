@@ -7,6 +7,8 @@ public class Dialog : MonoBehaviour
 {
     [SerializeField]
     protected Text dialoguetext;
+    [SerializeField]
+    protected float timeBetweenRepl = 2f;
     protected Image background;
 
     protected virtual void Start()
@@ -19,28 +21,29 @@ public class Dialog : MonoBehaviour
     }
     protected virtual IEnumerator DialogueCourutine(List<string> message)
     {
-        // for (int i=0; i <= 255; i++)
-        // {
-        //     background.color = new Color(0,0,0, i);
-        //     yield return new WaitForEndOfFrame();
-        // }
-        // dialoguetext.enabled = true;
+        for (int i=0; i <= 255; i++)
+        {
+            background.color = new Color(0,0,0, i);
+            yield return new WaitForEndOfFrame();
+        }
+        dialoguetext.enabled = true;
 
         foreach (var repl in message)
         {
+            dialoguetext.text = "";
             foreach (var letter in repl)
             {
                 dialoguetext.text += letter;
                 yield return new WaitForSeconds(0.1f);
             }
-            message.Remove(repl);
-            yield return new WaitForSeconds(3f);
+            //message.Remove(repl);
+            yield return new WaitForSeconds(timeBetweenRepl);
         }
-        // dialoguetext.enabled = false;
-        //  for (int i=255; i >= 0; i--)
-        // {
-        //     background.color = new Color(0,0,0, i);
-        //     yield return new WaitForEndOfFrame();
-        // }
+        dialoguetext.enabled = false;
+         for (int i=255; i >= 0; i--)
+        {
+            background.color = new Color(0,0,0, i);
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

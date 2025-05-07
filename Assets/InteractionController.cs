@@ -1,24 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractionController : PlayerController
+public class InteractionController : MonoBehaviour
 {
-    private void OnTriggerStay2D(Collider2D collision)
+    protected Iinteractable interactable;
+
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && isMove == true)
-            {
-                if (collision.gameObject.TryGetComponent<Iinteractable>(out var interactible))
-                    {
-                        interactible.Interact();
-                    }
-            }
-         if(Input.GetKeyDown(KeyCode.E) && isMove == false)
-            {
-                if (collision.gameObject.TryGetComponent<Iinteractable>(out var interactible))
-                    {
-                        interactible.Interact_1();
-                    }
-            }
+        if (interactable != null && Input.GetKeyDown(KeyCode.E))
+        {
+            interactable.Interact();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        interactable = collision.gameObject.GetComponent<Iinteractable>();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        interactable = null;
     }
 }
