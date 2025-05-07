@@ -15,9 +15,9 @@ public class Dialog : MonoBehaviour
     {
         background = GetComponent<Image>();
     }
-    public virtual void ShowText(List<string> message)
+    public virtual void ShowText(NPCDialogueData message)
     {
-        StartCoroutine(DialogueCourutine(message));
+        StartCoroutine(DialogueCourutine(message.Repliks));
     }
     protected virtual IEnumerator DialogueCourutine(List<string> message)
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCDialogueController : MonoBehaviour
 {
     [SerializeField]
-    protected List<string> repliks;
+    protected NPCDialogueData repliks;
     [SerializeField]
     protected Dialog dialogView;
 

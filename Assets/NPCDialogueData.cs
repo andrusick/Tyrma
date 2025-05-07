@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCDialogueData : MonoBehaviour
+[CreateAssetMenu(fileName = "NPCDialogueData",menuName = "Data/NPC", order = 1)]
+public class NPCDialogueData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public List<string> Repliks => repliks;
+   [SerializeField]
+    protected List<string> repliks;
 }
