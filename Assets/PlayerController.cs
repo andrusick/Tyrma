@@ -6,11 +6,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    protected float speed;
-    protected Rigidbody2D rb;
-    protected Vector2 direction;
-    protected float horizontalInput;
-    protected float verticalInput;
+    private float speed;
+    private Rigidbody2D rb;
+    private Vector2 direction;
+    private float horizontalInput;
+    private float verticalInput;
+    protected bool isMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +21,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isMove == true)
+        {
+            Move();
+        }
+
+        
+
+    }
+     void Move()
+     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
         direction = new Vector2(horizontalInput, verticalInput).normalized;
 
-        
-
-    }
+     }
 
     void FixedUpdate()
     {
