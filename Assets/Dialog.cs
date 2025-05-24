@@ -15,11 +15,8 @@ public class Dialog : MonoBehaviour
     {
         background = GetComponent<Image>();
     }
-    public virtual void ShowText(NPCDialogueData message)
-    {
-        StartCoroutine(DialogueCourutine(message.Repliks));
-    }
-    protected virtual IEnumerator DialogueCourutine(List<string> message)
+
+    public virtual IEnumerator EnableDialogueView()
     {
         for (int i=0; i <= 255; i++)
         {
@@ -28,22 +25,28 @@ public class Dialog : MonoBehaviour
         }
         dialoguetext.enabled = true;
 
-        foreach (var repl in message)
-        {
-            dialoguetext.text = "";
-            foreach (var letter in repl)
-            {
-                dialoguetext.text += letter;
-                yield return new WaitForSeconds(0.1f);
-            }
-            //message.Remove(repl);
-            yield return new WaitForSeconds(timeBetweenRepl);
-        }
+    }
+    public virtual IEnumerator DisableDialogueView()
+    {
         dialoguetext.enabled = false;
          for (int i=255; i >= 0; i--)
         {
             background.color = new Color(0,0,0, i);
             yield return new WaitForEndOfFrame();
         }
+    }
+        
+   
+    public virtual IEnumerator ShowText(string message)
+    {
+        dialoguetext.text = "";
+            foreach (var letter in message)
+            {
+                dialoguetext.text += letter;
+                yield return new WaitForSeconds(0.1f);
+            }
+        
+        
+        
     }
 }

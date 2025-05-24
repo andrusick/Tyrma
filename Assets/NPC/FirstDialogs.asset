@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0804e2381151c54e9f21a7998e3bcea, type: 3}
   m_Name: FirstDialogs
   m_EditorClassIdentifier: 
-  repliks: []
+  repliks:
+  - "\u0432 \u044D\u0442\u043E\u043C \u043D\u0435\u0442 \u0441\u043C\u044B\u0441\u043B\u0430..."
+  - ....
+  - "\u043D\u0435 \u043F\u044B\u0442\u0430\u0439\u0441\u044F"
+  - "\u0443\u0436\u0435 \u043F\u0440\u043E\u0431\u043E\u0432\u0430\u043B"
