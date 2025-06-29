@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
+    [SerializeField]
+    Transform cameraPosition;
+    [SerializeField]
+    CameraController cameraController;
    [SerializeField]
    protected Transform tp_2;
 
@@ -12,10 +16,11 @@ public class Teleport : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D other)
    {
-    if (other.TryGetComponent<PlayerEventManager>(out var playerEvent))
-    {
-        other.transform.position = tp_2.position + offset;
-        playerEvent.Teleported();
+        if (other.TryGetComponent<PlayerEventManager>(out var playerEvent))
+        {
+            other.transform.position = tp_2.position + offset;
+            playerEvent.Teleported();
+            cameraController.SetTargetPoint(cameraPosition.position, false);
     }
     
    }
