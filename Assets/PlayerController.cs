@@ -35,4 +35,8 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = direction * speed;
     }
+      void OnDisable()
+    {
+        rb.velocity = Vector2.zero;
+    }
 }

@@ -2,26 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class vector : MonoBehaviour
+public class AnimationControllerPoliceMan : MonoBehaviour
 {
+    protected Animator anim;
     protected Patrolling patrolling;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         patrolling = GetComponent<Patrolling>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-     void OnTriggerEnter2D(Collider2D other)
+        if (patrolling.Vector == false)
         {
-            if (other.tag == "zone")
-            {
-                Debug.Log("erdred");
-                patrolling.Vector = !patrolling.Vector;   
-            }
+            anim.SetBool("direction", false);
         }
+        else
+        {
+            anim.SetBool("direction", true);
+        }
+    }
 }

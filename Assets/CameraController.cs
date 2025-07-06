@@ -2,11 +2,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public enum CameraState
-    {
-        FollowPlayer,
-        MoveToPoint,
-    }
+
 
     [Header("Settings")]
     [SerializeField]
@@ -98,3 +94,8 @@ public class CameraController : MonoBehaviour
         isMovingToPoint = false;
     }
 }
+public enum CameraState
+    {
+        FollowPlayer,
+        MoveToPoint,
+    }

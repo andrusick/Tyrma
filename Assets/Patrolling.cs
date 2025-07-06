@@ -8,8 +8,12 @@ public class Patrolling : MonoBehaviour
     private float speed;
     private Rigidbody2D rb;
     private Vector2 direction;
-
-    public bool vector = true;
+    public bool Vector
+    {
+        get { return vector; }
+        set { vector = value; }
+    }
+    protected bool vector = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +38,10 @@ public class Patrolling : MonoBehaviour
     void Moving()
     {
         rb.velocity = direction * speed;
+    }
+    void OnDisable()
+    {
+        rb.velocity = Vector2.zero;
+        Debug.Log("ww");
     }
 }
